@@ -29,7 +29,7 @@ public class MarcasDaoImpTest {
 		System.out.println("Test consultar todas las marcas");
 		try{
 			List<Marcas> lista = marcasDao.listarTodasMarcas();
-			assertEquals(lista.size(),3);
+			assertEquals(lista.size(),2);
 		}catch (Exception e){
 			System.out.println("Error: " +e);
 		}
@@ -39,10 +39,11 @@ public class MarcasDaoImpTest {
 	public void pruebaConsultarMarcasPorId(){
 		Marcas marca = new Marcas();
 		Map<String, Integer> mapMarcas = new HashMap<>();
-		mapMarcas.put("idMarca", 1);
+		mapMarcas.put("idMarca", 4);
 		try{
 			marca = marcasDao.listarMarcaPorId(mapMarcas);
 			assertNotNull(marca);
+			System.out.println("consulta por id");
 			System.out.println("Id marca: " + marca.getIdMarca());
 			System.out.println("Nombre: " + marca.getNombreMarca());
 		}catch(Exception e){
@@ -65,11 +66,11 @@ public class MarcasDaoImpTest {
 		}
 	}
 	
-	@Ignore	
+	@Test
 	public void eliminaMarca(){
 		Map<String, Integer> mapMarcas = new HashMap<>();
 		Integer aux;
-		mapMarcas.put("idMarca", 4);
+		mapMarcas.put("idMarca", 2);
 		try{
 			aux = marcasDao.eliminaMarca(mapMarcas);
 			if(aux == 1){
@@ -83,11 +84,11 @@ public class MarcasDaoImpTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void actualizaMarca(){
 		Integer aux;
 		Marcas marca = new Marcas();
-		marca.setIdMarca(3);
+		marca.setIdMarca(2);
 		marca.setNombreMarca("Gucci");
 		try{
 			aux = marcasDao.actualizaMarca(marca);
