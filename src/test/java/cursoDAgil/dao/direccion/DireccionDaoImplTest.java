@@ -76,10 +76,10 @@ public class DireccionDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void eliminarDireccion(){
 		Map<String, Integer> mapDireccion=new HashMap<>();
-		mapDireccion.put("idDireccion", 7);
+		mapDireccion.put("idDireccion", 18);
 		try{
 			direccionDao.eliminarDireccion(mapDireccion);
 		}catch (Exception e) {

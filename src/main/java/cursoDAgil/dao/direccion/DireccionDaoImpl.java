@@ -26,7 +26,7 @@ public class DireccionDaoImpl implements DireccionDao {
 		// TODO Auto-generated method stub
 		try {
 			DireccionMapper direccionMapper = sqlSession.getMapper(DireccionMapper.class);
-			System.out.println("direccion creada con éxito");
+			System.out.println("direccion creada con exito");
 			return direccionMapper.nuevaDireccionCliente(direccion);
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -61,7 +61,7 @@ public class DireccionDaoImpl implements DireccionDao {
 	public Integer eliminarDireccion(Map<String, Integer> mapDireccion) {
 		try{
 			DireccionMapper direccionMapper = sqlSession.getMapper(DireccionMapper.class);
-			System.out.println("Dirección eliminado con éxito");
+			System.out.println("Direccion eliminado con exito");
 			return direccionMapper.eliminarDireccion(mapDireccion);
 		}catch(Exception e){
 			System.out.println("ErrorDireccion2: " + e);

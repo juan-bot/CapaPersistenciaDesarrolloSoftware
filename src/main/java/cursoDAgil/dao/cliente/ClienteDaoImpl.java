@@ -36,11 +36,11 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 				System.out.println("Sexo: " + c.getSexo());
 				System.out.println("Id Direccion: " + c.getIdDireccion() );
 				System.out.println("Calle: " + c.getDireccion().getCalle() );
-				System.out.println("Número: " + c.getDireccion().getNumero());
+				System.out.println("Numero: " + c.getDireccion().getNumero());
 				System.out.println("Colonia: " + c.getDireccion().getColonia() );
 				System.out.println("Ciudad: " + c.getDireccion().getCiudad());
-				System.out.println("País: " + c.getDireccion().getPais());
-				System.out.println("Código Postal: " + c.getDireccion().getCodigoPostal());
+				System.out.println("Pais: " + c.getDireccion().getPais());
+				System.out.println("Codigo Postal: " + c.getDireccion().getCodigoPostal());
 			}
 			return list;
 		}catch (Exception e){
@@ -53,7 +53,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 	public Integer nuevoCliente(Cliente cliente) {
 		try{
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
-			System.out.println("Cliente creado con éxito");
+			System.out.println("Cliente creado con exito");
 			return clienteMapper.nuevoCliente(cliente);
 		}catch(Exception e){
 			System.out.println("ErrorCliente0: " + e);
@@ -68,7 +68,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 	public Integer editarCliente(Cliente cliente) {
 		try{
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
-			System.out.println("Cliente editado con éxito");
+			System.out.println("Cliente editado con Exito");
 			return clienteMapper.editarCliente(cliente);
 		}catch(Exception e){
 			System.out.println("ErrorCliente1: " + e);
@@ -92,7 +92,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 	public Integer eliminarCliente(Map<String, Integer> mapCliente) {
 		try{
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
-			System.out.println("Cliente eliminado con éxito");
+			System.out.println("Cliente eliminado con Exito");
 			return clienteMapper.eliminarCliente(mapCliente);
 		}catch(Exception e){
 			System.out.println("ErrorCliente2: " + e);

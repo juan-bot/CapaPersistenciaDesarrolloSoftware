@@ -49,11 +49,11 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 
-	public Integer getIddireccion() {
+	public Integer getIdDireccion() {
 		return idDireccion;
 	}
 
-	public void setIddireccion(Integer idDireccion) {
+	public void setIdDireccion(Integer idDireccion) {
 		this.idDireccion = idDireccion;
 	}
 	

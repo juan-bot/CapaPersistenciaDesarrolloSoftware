@@ -1,5 +1,4 @@
-package cursoDAgil.dao;
-
+package cursoDAgil.dao.cliente;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
@@ -34,13 +33,13 @@ public class ClienteDaoImplTest {
 		System.out.println("Test consultar todos los clientes");
 		try {
 			List<Cliente> lista = clienteDao.listarTodosClientes();
-			assertEquals(lista.size(), 3);
+			assertEquals(lista.size(), 2);
 			System.out.println("//------------------------------------");
 		} catch (Exception ex) {
 			System.out.println("Error en consultar todos los clientes" + ex);
 		}
 	}
-	@Test
+	@Ignore
 	public void editarRegistro(){
 		Cliente cliente = new Cliente();
 		Map<String, Integer> mapCliente=new HashMap<>();
@@ -52,7 +51,7 @@ public class ClienteDaoImplTest {
 			cliente.setApellido("García");
 			cliente.setEmail("alfredo@gmail.com");
 			cliente.setSexo("Masculino");
-			cliente.setIdDireccion(2);
+			cliente.setIdDireccion(14);
 			clienteDao.editarCliente(cliente);
 		}catch (Exception e){
 			System.out.println("Error en editar cliente" + e);
@@ -65,16 +64,17 @@ public class ClienteDaoImplTest {
 		Cliente cliente = new Cliente();
 		Direccion direccion= new Direccion();
 		Map<String, Integer> mapDireccion= new HashMap<>();
-		mapDireccion.put("idDireccion",20);
+		mapDireccion.put("idDireccion",3);
 		System.out.println("Ingresa un nuevo cliente");
 		try {
-			cliente.setNombre("Ricardo");
-			cliente.setApellido("García");
+			cliente.setNombre("Ricardo3");
+			cliente.setApellido("Garcia");
 			cliente.setEmail("ricardo@gmail.com");
 			cliente.setSexo("Masculino");
 			direccion= direccionDao.obtenerDireccionPorId(mapDireccion);
 			cliente.setIdDireccion(direccion.getIdDireccion());
 			cliente.setDireccion(direccion);
+			System.out.println("entraa");
 			clienteDao.nuevoCliente(cliente);
 		} catch (Exception e) {
 			System.out.println("Error al crear cliente: " + e);
@@ -101,11 +101,11 @@ public class ClienteDaoImplTest {
 	}
 
 	
-	@Ignore
+	@Test
 	//YA SALE
 	public void eliminarCliente(){
 		Map<String, Integer> mapCliente=new HashMap<>();
-		mapCliente.put("id", 4);
+		mapCliente.put("id", 2);
 		try{
 			clienteDao.eliminarCliente(mapCliente);
 		}catch (Exception e) {
