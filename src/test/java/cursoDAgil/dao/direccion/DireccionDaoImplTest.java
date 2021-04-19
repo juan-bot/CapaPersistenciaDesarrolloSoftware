@@ -23,7 +23,7 @@ public class DireccionDaoImplTest {
 	@Inject
 	DireccionDao direccionDao;
 
-	@Test
+	@Ignore
 	public void consultarDireccionPorId() {
 		Direccion direccion = new Direccion();
 		Map<String, Integer> mapDireccion = new HashMap<>();
@@ -31,14 +31,19 @@ public class DireccionDaoImplTest {
 		try {
 			direccion = direccionDao.obtenerDireccionPorId(mapDireccion);
 			assertNotNull(direccion);
-			System.out.println("id:" + direccion.getIdDireccion());
-			System.out.println("calle:" + direccion.getCalle());
+			System.out.println("id: " + direccion.getIdDireccion());
+			System.out.println("Calle: " + direccion.getCalle() );
+			System.out.println("Número: " + direccion.getNumero());
+			System.out.println("Colonia: " + direccion.getColonia() );
+			System.out.println("Ciudad: " + direccion.getCiudad());
+			System.out.println("País: " + direccion.getPais());
+			System.out.println("Código Postal: " + direccion.getCodigoPostal());
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
 	}
 
-	@Test
+	@Ignore
 	public void pruebaConsultarTodo() {
 		int reg;
 		System.out.println("Test consultar todas las direcciones");
@@ -68,6 +73,17 @@ public class DireccionDaoImplTest {
 			direccionDao.nuevaDireccionCliente(direccion);
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
+		}
+	}
+	
+	@Test
+	public void eliminarDireccion(){
+		Map<String, Integer> mapDireccion=new HashMap<>();
+		mapDireccion.put("idDireccion", 7);
+		try{
+			direccionDao.eliminarDireccion(mapDireccion);
+		}catch (Exception e) {
+				System.out.println("Error al eliminar direccion: " + e);
 		}
 	}
 }
