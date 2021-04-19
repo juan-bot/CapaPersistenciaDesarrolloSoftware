@@ -5,6 +5,7 @@
 <mapper namespace="cursoDAgil.bd.mappers.DireccionMapper">
 	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Direccion">
 		<id column="idDireccion" property="idDireccion" jdbcType="INTEGER" />
+
 		<result column="calle" property="calle" jdbcType="VARCHAR" />
 		<result column="numero" property="numero" jdbcType="INTEGER" />
 		<result column="colonia" property="colonia" jdbcType="VARCHAR" />
@@ -17,7 +18,6 @@
 		SELECT * FROM
 		DIRECCION
 	</select>
-	
 	<insert id="nuevaDireccionCliente" parameterType="cursoDAgil.bd.domain.Direccion"
 		useGeneratedKeys="true" keyProperty="idDireccion">
 		INSERT INTO direccion(calle, numero,
@@ -25,7 +25,6 @@
 		VALUES (#{calle}, #{numero},
 		#{colonia}, #{ciudad}, #{estado}, #{pais}, #{codigoPostal})
 	</insert>
-	
 	<select id="obtenerDireccionPorId" resultMap="BaseResultMap"
 		parameterType="hashMap">
 		SELECT
@@ -42,4 +41,9 @@
 		WHERE
 		idDireccion = #{idDireccion}
 	</select>
+	
+	<delete id= "eliminarDireccion" parameterType= "hashMap">
+	DELETE from direccion WHERE direccion.idDireccion=#{idDireccion}
+	</delete>
+	
 </mapper>
