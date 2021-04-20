@@ -25,7 +25,7 @@ public class MarcasDaoImpTest {
 	MarcasDao marcasDao;
 	
 	@Ignore
-	public void pruebaConstularTodas(){
+	public void pruebaConsultarTodo(){
 		System.out.println("Test consultar todas las marcas");
 		try{
 			List<Marcas> lista = marcasDao.listarTodasMarcas();
@@ -99,7 +99,7 @@ public class MarcasDaoImpTest {
 				System.out.println("Error al actualizar marca");
 			}
 		}catch(Exception e){
-			System.out.println("Error: " );
+			System.out.println("Error: "+e );
 		}
 	}
 
