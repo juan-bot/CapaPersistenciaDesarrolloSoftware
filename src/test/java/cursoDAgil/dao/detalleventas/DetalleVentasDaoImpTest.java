@@ -2,7 +2,9 @@ package cursoDAgil.dao.detalleventas;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -21,6 +23,24 @@ public class DetalleVentasDaoImpTest {
 	@Inject
 	DetalleVentasDao detalleVentasDao;
 	
+	
+	@Test
+	public void detallePorId(){
+		DetalleVentas detalleventas = new DetalleVentas();
+		Map<String, Integer> mapDetalle =new HashMap<>();
+		mapDetalle.put("ventaId", 1);
+		try{
+			detalleventas =detalleVentasDao.DetalleVentaPorId(mapDetalle);
+			assertNotNull(detalleventas);
+			System.out.println("ventaId: "+detalleventas.getVentaId());
+			System.out.println("productoId: "+detalleventas.getProductoId());
+			System.out.println("cantidad: "+detalleventas.getCantidad());
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+	}
+	
+	
 	@Ignore
 	public void pruebaListarTodasDetallVentas(){
 		System.out.println("Test consultar todas detalle ventas");
@@ -36,7 +56,7 @@ public class DetalleVentasDaoImpTest {
 			System.out.println("Error: " + e);
 		}
 	}
-	@Test
+	@Ignore
 	public void nuevoDetalle(){
 		DetalleVentas detalleventas = new DetalleVentas();
 		try{

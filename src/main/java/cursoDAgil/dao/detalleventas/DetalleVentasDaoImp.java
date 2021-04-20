@@ -2,6 +2,7 @@ package cursoDAgil.dao.detalleventas;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Named;
 
@@ -46,6 +47,20 @@ public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 		}catch(Exception e){
 			System.out.println("Error " + e);
 		}
+		return null;
+	}
+
+	@Override
+	public DetalleVentas DetalleVentaPorId(Map<String, Integer> mapDetalle) {
+		DetalleVentas detalle = new DetalleVentas();
+		try{
+			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
+			detalle=detalleVentasMapper.DetalleVentaPorId(mapDetalle);
+			return detalle;
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+		
 		return null;
 	}
 
