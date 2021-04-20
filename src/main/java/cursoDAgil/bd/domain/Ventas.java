@@ -3,13 +3,16 @@ package cursoDAgil.bd.domain;
 import java.util.Date;
 
 public class Ventas {
-	private Cliente cliente;
-	private DetalleVentas detalleventas;
+	
 	private Integer idVenta;
 	private Integer clienteId;
 	private Double totalVenta;
 	private Date fecha;
 
+	private Cliente cliente;
+	private DetalleVentas detalleventas;
+	private Ganancias ganancia;
+	
 	public void setIdVenta(Integer idVenta) {
 		this.idVenta = idVenta;
 	}

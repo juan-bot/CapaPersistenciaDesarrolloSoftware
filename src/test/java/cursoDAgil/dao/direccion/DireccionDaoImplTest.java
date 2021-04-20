@@ -33,11 +33,11 @@ public class DireccionDaoImplTest {
 			assertNotNull(direccion);
 			System.out.println("id: " + direccion.getIdDireccion());
 			System.out.println("Calle: " + direccion.getCalle() );
-			System.out.println("Número: " + direccion.getNumero());
+			System.out.println("Numero: " + direccion.getNumero());
 			System.out.println("Colonia: " + direccion.getColonia() );
 			System.out.println("Ciudad: " + direccion.getCiudad());
-			System.out.println("País: " + direccion.getPais());
-			System.out.println("Código Postal: " + direccion.getCodigoPostal());
+			System.out.println("Pais: " + direccion.getPais());
+			System.out.println("Codigo Postal: " + direccion.getCodigoPostal());
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}

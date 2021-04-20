@@ -6,4 +6,5 @@ import cursoDAgil.bd.domain.DetalleVentas;
 
 public interface DetalleVentasDao {
 	List<DetalleVentas> listarTodasDetalleVentas();
+	Integer nuevoDetalleVenta(DetalleVentas detalleventas);
 }

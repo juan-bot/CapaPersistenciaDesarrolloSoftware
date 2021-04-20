@@ -14,9 +14,6 @@ import cursoDAgil.bd.mappers.DetalleVentasMapper;
 @Named
 public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4113698898281390702L;
 	SqlSession sqlSession;
 	
@@ -34,6 +31,20 @@ public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 			return list;
 		}catch(Exception e){
 			System.out.println("Error: " + e);
+		}
+		return null;
+	}
+
+	@Override
+	public Integer nuevoDetalleVenta(DetalleVentas detalleventas) {
+		Integer aux = 0;
+		try{
+			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
+			aux=detalleVentasMapper.nuevoDetalleVenta(detalleventas);
+			System.out.println("Detalle creado con exito");
+			return aux;
+		}catch(Exception e){
+			System.out.println("Error " + e);
 		}
 		return null;
 	}

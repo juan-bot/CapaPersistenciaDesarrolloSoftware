@@ -10,5 +10,10 @@
   <select id="listarTodasDetalleVentas" resultMap="BaseResultMap">
   		select * from detalleventas
   </select>
-  
+  <insert id="nuevoDetalleVenta" parameterType="cursoDAgil.bd.domain.DetalleVentas"
+  useGeneratedKeys="true" keyProperty="ventaId">
+		INSERT INTO detalleventas(ventaId,productoId,cantidad)
+		VALUES(#{ventaId},#{productoId},#{cantidad})
+	</insert>
+	
 </mapper>

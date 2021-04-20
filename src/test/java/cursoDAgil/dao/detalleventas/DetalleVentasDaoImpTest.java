@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,7 +21,7 @@ public class DetalleVentasDaoImpTest {
 	@Inject
 	DetalleVentasDao detalleVentasDao;
 	
-	@Test
+	@Ignore
 	public void pruebaListarTodasDetallVentas(){
 		System.out.println("Test consultar todas detalle ventas");
 		try{
@@ -35,5 +36,16 @@ public class DetalleVentasDaoImpTest {
 			System.out.println("Error: " + e);
 		}
 	}
-
+	@Test
+	public void nuevoDetalle(){
+		DetalleVentas detalleventas = new DetalleVentas();
+		try{
+			detalleventas.setVentaId(2);
+			detalleventas.setProductoId(2);
+			detalleventas.setCantidad(2);
+			detalleVentasDao.nuevoDetalleVenta(detalleventas);
+		}catch (Exception e) {
+			System.out.println("Error al crear cliente: " + e);
+		}
+	}
 }

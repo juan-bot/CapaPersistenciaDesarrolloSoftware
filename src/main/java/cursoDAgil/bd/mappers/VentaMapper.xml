@@ -54,8 +54,7 @@
 		d.ventaId,
 		d.productoId,
 		d.cantidad
-		FROM Equipo6.VENTAS ven INNER
-		JOIN detalleventas
+		FROM Equipo6.VENTAS ven INNER JOIN detalleventas
 		AS d ON ven.idVenta = d.ventaId
 	</select>
 
