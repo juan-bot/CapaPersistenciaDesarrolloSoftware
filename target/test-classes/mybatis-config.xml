@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="cursoDAgil/bd/mappers/GananciasMapper.xml"/>	
 		<mapper resource="cursoDAgil/bd/mappers/DetalleVentasMapper.xml"/>	
 		<mapper resource="cursoDAgil/bd/mappers/MarcasMapper.xml"/>	
+		<mapper resource="cursoDAgil/bd/mappers/VentaMapper.xml"/>	
 	</mappers>
 </configuration>
 

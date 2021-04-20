@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cursoDAgil.bd.mappers.VentaMapper">
+
+	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Ventas">
+		<result column="idVenta" jdbcType="INTEGER" property="idVenta" />
+		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
+		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
+		<result column="fecha" jdbcType="DATE" property="fecha" />
+	</resultMap>
+
+	<select id="listarVentasTodo" resultMap="BaseResultMap">
+		select * from ventas
+	</select>
+	<insert id="nuevaVenta" parameterType="cursoDAgil.bd.domain.Ventas"
+		useGeneratedKeys="true" keyProperty="idVenta">
+		INSERT INTO ventas(idVenta, clienteId,totalVenta,fecha) VALUES(#{idVenta}, #{clienteId},#{totalVenta},#{fecha})
+	</insert>
+</mapper>
