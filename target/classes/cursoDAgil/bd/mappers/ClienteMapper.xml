@@ -34,7 +34,6 @@
 		cli.sexo,
 		cli.idDireccion,
 		d.idDireccion,
-
 		d.calle,
 		d.numero,
 		d.colonia,

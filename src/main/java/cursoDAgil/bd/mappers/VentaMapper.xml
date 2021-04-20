@@ -4,17 +4,79 @@
 <mapper namespace="cursoDAgil.bd.mappers.VentaMapper">
 
 	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Ventas">
-		<result column="idVenta" jdbcType="INTEGER" property="idVenta" />
+		<id column="idVenta" jdbcType="INTEGER" property="idVenta" />
 		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
 		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
 		<result column="fecha" jdbcType="DATE" property="fecha" />
 	</resultMap>
 
+	<resultMap id="ResultVentaCliente" type="cursoDAgil.bd.domain.Ventas">
+		<id column="idVenta" property="idVenta" />
+		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
+		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
+		<result column="fecha" jdbcType="DATE" property="fecha" />
+		<association property="cliente" column="id" resultMap="ClienteResultMap" />
+	</resultMap>
+	
+	<resultMap id="ResultVentaDetalle" type="cursoDAgil.bd.domain.Ventas">
+		<id column="idVenta" property="idVenta" />
+		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
+		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
+		<result column="fecha" jdbcType="DATE" property="fecha" />
+		<association property="detalleventas" column="id" resultMap="DetalleVentaResultMap" />
+	</resultMap>
+	
 	<select id="listarVentasTodo" resultMap="BaseResultMap">
 		select * from ventas
 	</select>
+	<select id="listarVentasPorCliente" resultMap="ResultVentaCliente">
+		SELECT
+		ven.idVenta,
+		ven.clienteId,
+		ven.totalVenta,
+		ven.fecha,
+		c.id,
+		c.nombre,
+		c.apellido,
+		c.email,
+		c.sexo,
+		c.idDireccion
+		FROM Equipo6.VENTAS ven INNER
+		JOIN cliente AS c ON ven.clienteId = c.id
+	</select>
+	
+	<select id="ListarDetalleVenta" resultMap="ResultVentaDetalle">
+		SELECT
+		ven.idVenta,
+		ven.clienteId,
+		ven.totalVenta,
+		ven.fecha,
+		d.ventaId,
+		d.productoId,
+		d.cantidad
+		FROM Equipo6.VENTAS ven INNER
+		JOIN detalleventas
+		AS d ON ven.idVenta = d.ventaId
+	</select>
+
+	<resultMap id="ClienteResultMap" type="cursoDAgil.bd.domain.Cliente">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="nombre" jdbcType="VARCHAR" property="nombre" />
+		<result column="apellido" jdbcType="VARCHAR" property="apellido" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="sexo" jdbcType="VARCHAR" property="sexo" />
+		<result column="idDireccion" jdbcType="INTEGER" property="idDireccion" />
+	</resultMap>
+	<resultMap id="DetalleVentaResultMap" type="cursoDAgil.bd.domain.DetalleVentas">
+		<result column="ventaId" jdbcType="INTEGER" property="ventaId" />
+		<result column="productoId" jdbcType="INTEGER" property="productoId" />
+		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
+	</resultMap>
 	<insert id="nuevaVenta" parameterType="cursoDAgil.bd.domain.Ventas"
 		useGeneratedKeys="true" keyProperty="idVenta">
-		INSERT INTO ventas(idVenta, clienteId,totalVenta,fecha) VALUES(#{idVenta}, #{clienteId},#{totalVenta},#{fecha})
+		INSERT INTO ventas(idVenta,
+		clienteId,totalVenta,fecha)
+		VALUES(#{idVenta},
+		#{clienteId},#{totalVenta},#{fecha})
 	</insert>
 </mapper>

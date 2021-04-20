@@ -34,7 +34,7 @@ public class VentasDaoImplTest {
 			System.out.println("Errortest: " + e);
 		}
 	}
-	@Test
+	@Ignore
 	public void nuevaVenta(){
 		Ventas venta =new Ventas();
 		System.out.println("Test nuevo registro");
@@ -54,7 +54,25 @@ public class VentasDaoImplTest {
 		}catch(Exception e){
 			System.out.println("Error6: " + e);
 		}
-		
 	}
-	
+	@Ignore
+	public void listarVentasPorCliente(){
+		System.out.println("Test consultar todas las ventas por cliente");
+		try{
+			List<Ventas> lista = ventasDao.listarVentasPorCliente();
+			assertEquals(lista.size(),3);
+		}catch(Exception e){
+			System.out.println("Errortest: " + e);
+		}
+	}
+	@Test
+	public void listarDetalleVentas(){
+		System.out.println("Test consultar compras del cliente");
+		try{
+			List<Ventas> lista = ventasDao.ListarDetalleVenta();
+			assertEquals(lista.size(),3);
+		}catch(Exception e){
+			System.out.println("Errortest: " + e);
+		}
+	}
 }

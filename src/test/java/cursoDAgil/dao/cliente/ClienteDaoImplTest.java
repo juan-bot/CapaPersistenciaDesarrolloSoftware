@@ -27,7 +27,7 @@ public class ClienteDaoImplTest {
 	@Inject
 	DireccionDao direccionDao;
 	
-	@Ignore
+	@Test
 	//YA SALE
 	public void pruebaConsultarTodo() {
 		System.out.println("Test consultar todos los clientes");
@@ -101,7 +101,7 @@ public class ClienteDaoImplTest {
 	}
 
 	
-	@Test
+	@Ignore
 	//YA SALE
 	public void eliminarCliente(){
 		Map<String, Integer> mapCliente=new HashMap<>();

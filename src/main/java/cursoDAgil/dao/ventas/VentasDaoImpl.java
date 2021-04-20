@@ -59,4 +59,61 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 		return null;
 	}
 
+	@Override
+	public List<Ventas> listarVentasPorCliente() {
+		List<Ventas> list = null;
+		try{
+			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
+			list = ventasMapper.listarVentasPorCliente();
+			for(Ventas v: list){
+				System.out.println("Venta-------");
+				System.out.println("idVenta: " + v.getIdVenta());
+				System.out.println("clienteId: " + v.getClienteId());
+				System.out.println("totalVenta: " + v.getTotalVenta());
+				Date date = v.getFecha();
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+				String strDate = dateFormat.format(date);
+				System.out.println("fecha: " + strDate);
+				
+				System.out.println("Id: " + v.getCliente().getId());
+				System.out.println("Nombre: " + v.getCliente().getNombre());
+				System.out.println("Apellido: " + v.getCliente().getApellido());
+				System.out.println("Email: " + v.getCliente().getEmail());
+				System.out.println("Sexo: " + v.getCliente().getSexo());
+				System.out.println("Id Direccion: " + v.getCliente().getIdDireccion());
+			}
+			return list;
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Ventas> ListarDetalleVenta() {
+		List<Ventas> list = null;
+		try{
+			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
+			list = ventasMapper.ListarDetalleVenta();
+			for(Ventas v: list){
+				System.out.println("Venta-------");
+				System.out.println("idVenta: " + v.getIdVenta());
+				System.out.println("clienteId: " + v.getClienteId());
+				System.out.println("totalVenta: " + v.getTotalVenta());
+				Date date = v.getFecha();
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+				String strDate = dateFormat.format(date);
+				System.out.println("fecha: " + strDate);
+				
+				System.out.println("VentaId: " + v.getDetalle().getVentaId());
+				System.out.println("ProductoId: " + v.getDetalle().getProductoId());
+				System.out.println("Cantidad: " + v.getDetalle().getCantidad());
+			}
+			return list;
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+		return null;
+	}
+
 }

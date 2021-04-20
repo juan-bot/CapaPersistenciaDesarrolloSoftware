@@ -56,7 +56,7 @@ public class Cliente {
 	public void setIdDireccion(Integer idDireccion) {
 		this.idDireccion = idDireccion;
 	}
-	
+	//agregar relacion con direccion
 	public Cliente() {
 		setDireccion(new Direccion());
 	}

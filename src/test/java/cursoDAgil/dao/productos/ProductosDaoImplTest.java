@@ -24,7 +24,7 @@ public class ProductosDaoImplTest {
 	@Inject
 	ProductosDao productosDao;
 	
-	@Ignore
+	@Test
 	public void pruebaConsultarTodo(){
 		System.out.println("Test consultar todos los productos");
 		try{
@@ -57,7 +57,7 @@ public class ProductosDaoImplTest {
 	public void pruebaNuevoProducto(){
 		Productos producto = new Productos();
 		Integer aux;
-		producto.setIdProducto(3);
+		//producto.setIdProducto(3);
 		producto.setNombre("carro");
 		producto.setPrecio(23.34);
 		producto.setPrecioVta(45.2);
@@ -88,7 +88,7 @@ public class ProductosDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void actualizaProducto(){
 		Integer aux;
 		Productos producto = new Productos();
@@ -97,7 +97,7 @@ public class ProductosDaoImplTest {
 		producto.setPrecio(33.2);
 		producto.setPrecioVta(45.2);
 		producto.setCantidad(56);
-		producto.setMarcaId(2);
+		producto.setMarcaId(1);
 		try{
 			aux = productosDao.actualizaProducto(producto);
 			if(aux == 1){

@@ -29,6 +29,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
 			list = clienteMapper.listarTodosClientes();
 			for(Cliente c:list){
+				System.out.println("Cliente-------");
 				System.out.println("Id: " + c.getId());
 				System.out.println("Nombre: " + c.getNombre());
 				System.out.println("Apellido: " + c.getApellido());

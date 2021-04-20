@@ -39,7 +39,7 @@ public class MarcasDaoImpTest {
 	public void pruebaConsultarMarcasPorId(){
 		Marcas marca = new Marcas();
 		Map<String, Integer> mapMarcas = new HashMap<>();
-		mapMarcas.put("idMarca", 4);
+		mapMarcas.put("idMarca", 1);
 		try{
 			marca = marcasDao.listarMarcaPorId(mapMarcas);
 			assertNotNull(marca);
@@ -55,7 +55,7 @@ public class MarcasDaoImpTest {
 	public void pruebaNuevaMarca(){
 		Marcas marca = new Marcas();
 		Integer aux;
-		marca.setIdMarca(4);
+		marca.setIdMarca(1);
 		marca.setNombreMarca("Vans");
 		aux = marcasDao.nuevaMarca(marca);
 		if (aux == 1){
@@ -66,7 +66,7 @@ public class MarcasDaoImpTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void eliminaMarca(){
 		Map<String, Integer> mapMarcas = new HashMap<>();
 		Integer aux;
@@ -84,7 +84,7 @@ public class MarcasDaoImpTest {
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void actualizaMarca(){
 		Integer aux;
 		Marcas marca = new Marcas();
