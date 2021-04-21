@@ -18,7 +18,7 @@
   <select id="listarProductosPorId" resultMap="BaseResultMap" parameterType="hashMap">
   		select * from productos where idProducto = #{idProducto}
   </select>
-  
+
   <insert id="nuevoProducto" parameterType="cursoDAgil.bd.domain.Productos" useGeneratedKeys="true" keyProperty="idProducto">
   	INSERT INTO productos(idProducto, nombre,precio,precioVta,cantidad,marcaId) 
   	VALUES(#{idProducto}, #{nombre},#{precio},#{precioVta},#{cantidad},#{marcaId})

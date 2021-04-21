@@ -8,5 +8,5 @@ import cursoDAgil.bd.domain.DetalleVentas;
 public interface DetalleVentasMapper {
 	List<DetalleVentas> listarTodasDetalleVentas();
 	Integer nuevoDetalleVenta(DetalleVentas detalleventas);
-	DetalleVentas DetalleVentaPorId(Map<String, Integer> mapDetalle);
+	List<DetalleVentas> DetalleVentaPorId(Map<String, Integer> mapDetalle);
 }

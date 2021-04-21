@@ -32,7 +32,7 @@ public class ProductosDaoImpl implements ProductosDao, Serializable{
 			for(Productos p: lista){
 				System.out.println("idProducto: "+p.getIdProducto());
 				System.out.println("nombre: "+p.getNombre());
-				System.out.println("precio: "+p.getPrecio());
+				System.out.println("precio: "+p.getPrecio()); 
 				System.out.println("precioVta: "+p.getPrecio());
 				System.out.println("cantidad: "+p.getCantidad());
 				System.out.println("marcaId: "+p.getMarcaId());

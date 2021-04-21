@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cursoDAgil.bd.domain.DetalleVentas;
+import cursoDAgil.bd.domain.Ventas;
 import cursoDAgil.bd.mappers.DetalleVentasMapper;
 
 @Named
@@ -51,12 +52,12 @@ public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 	}
 
 	@Override
-	public DetalleVentas DetalleVentaPorId(Map<String, Integer> mapDetalle) {
-		DetalleVentas detalle = new DetalleVentas();
+	public List<DetalleVentas> DetalleVentaPorId(Map<String, Integer> mapDetalle) {
+		List<DetalleVentas> list = null;
 		try{
 			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
-			detalle=detalleVentasMapper.DetalleVentaPorId(mapDetalle);
-			return detalle;
+			list=detalleVentasMapper.DetalleVentaPorId(mapDetalle);
+			return list;
 		}catch(Exception e){
 			System.out.println("Error: " + e);
 		}

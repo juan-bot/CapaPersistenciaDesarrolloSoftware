@@ -24,7 +24,7 @@ public class DetalleVentasDaoImpTest {
 	DetalleVentasDao detalleVentasDao;
 	
 	
-	@Test
+	/*@Test
 	public void detallePorId(){
 		DetalleVentas detalleventas = new DetalleVentas();
 		Map<String, Integer> mapDetalle =new HashMap<>();
@@ -39,7 +39,7 @@ public class DetalleVentasDaoImpTest {
 			System.out.println("Error: " + e);
 		}
 	}
-	
+*/	
 	
 	@Ignore
 	public void pruebaListarTodasDetallVentas(){

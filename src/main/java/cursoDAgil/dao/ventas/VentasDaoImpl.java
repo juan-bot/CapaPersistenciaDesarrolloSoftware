@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Named;
 
@@ -112,6 +113,23 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 			return list;
 		}catch(Exception e){
 			System.out.println("Error: " + e);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Ventas> obtenerVentaPorClienteId(Map<String, Integer> mapVentas) {
+		List<Ventas> list = null;
+		try{
+			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
+			list = ventasMapper.obtenerVentaPorClienteId(mapVentas);
+			/*for(Ventas v:list){
+				System.out.println("idVenta :"+v.getIdVenta());
+				System.out.println("clienteId :"+ v.getClienteId());
+			}*/
+			return list;
+		}catch(Exception e){
+			System.out.println("Error al obtener la venta por el idcliente: " + e);
 		}
 		return null;
 	}

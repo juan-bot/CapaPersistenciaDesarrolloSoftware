@@ -45,6 +45,11 @@
 		JOIN cliente AS c ON ven.clienteId = c.id
 	</select>
 	
+	<select id="obtenerVentaPorClienteId" resultMap="BaseResultMap"
+		parameterType="hashMap">
+		SELECT * FROM ventas WHERE clienteId=#{clienteId}
+	</select>
+	
 	<select id="ListarDetalleVenta" resultMap="ResultVentaDetalle">
 		SELECT
 		ven.idVenta,
