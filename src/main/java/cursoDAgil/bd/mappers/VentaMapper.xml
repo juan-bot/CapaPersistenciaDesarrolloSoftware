@@ -83,4 +83,8 @@
 		VALUES(#{idVenta},
 		#{clienteId},#{totalVenta},#{fecha})
 	</insert>
+	<update id="actualizaVenta" parameterType="cursoDAgil.bd.domain.Ventas">
+  	UPDATE ventas SET idVenta = #{idVenta}, clienteId = #{clienteId},totalVenta = #{totalVenta},fecha = #{fecha}
+  	WHERE idVenta = #{idVenta}
+  </update>
 </mapper>

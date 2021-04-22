@@ -11,4 +11,5 @@ public interface VentasDao {
 	List<Ventas> listarVentasPorCliente();
 	List<Ventas> ListarDetalleVenta();
 	List<Ventas> obtenerVentaPorClienteId(Map<String, Integer> mapVentas);
+	Integer actualizaVenta(Ventas venta);
 }

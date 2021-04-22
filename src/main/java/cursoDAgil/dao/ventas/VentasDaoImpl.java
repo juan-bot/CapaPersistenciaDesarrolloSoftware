@@ -31,7 +31,7 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 		try{
 			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
 			list = ventasMapper.listarVentasTodo();
-			for(Ventas v: list){
+			/*for(Ventas v: list){
 				System.out.println("idVenta: " + v.getIdVenta());
 				System.out.println("clienteId: " + v.getClienteId());
 				System.out.println("totalVenta: " + v.getTotalVenta());
@@ -39,7 +39,7 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 				String strDate = dateFormat.format(date);
 				System.out.println("fecha: " + strDate);
-			}
+			}*/
 			return list;
 		}catch(Exception e){
 			System.out.println("Error: " + e);
@@ -130,6 +130,20 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 			return list;
 		}catch(Exception e){
 			System.out.println("Error al obtener la venta por el idcliente: " + e);
+		}
+		return null;
+	}
+
+	@Override
+	public Integer actualizaVenta(Ventas venta) {
+		Integer aux = 0;
+		try{
+			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
+			System.out.println("Actualizo venta con exito");
+			aux=ventasMapper.actualizaVenta(venta);
+			return aux;
+		}catch(Exception e){
+			System.out.println("Error: " + e);
 		}
 		return null;
 	}

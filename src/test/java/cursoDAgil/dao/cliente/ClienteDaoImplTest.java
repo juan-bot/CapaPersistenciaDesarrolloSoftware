@@ -27,7 +27,7 @@ public class ClienteDaoImplTest {
 	@Inject
 	DireccionDao direccionDao;
 	
-	@Test
+	@Ignore
 	//YA SALE
 	public void pruebaConsultarTodo() {
 		System.out.println("Test consultar todos los clientes");
@@ -48,7 +48,7 @@ public class ClienteDaoImplTest {
 			System.out.println("Editar cliente");
 			cliente.setId(2);
 			cliente.setNombre("Alfredo");
-			cliente.setApellido("García");
+			cliente.setApellido("Garcia");
 			cliente.setEmail("alfredo@gmail.com");
 			cliente.setSexo("Masculino");
 			cliente.setIdDireccion(14);
@@ -58,7 +58,7 @@ public class ClienteDaoImplTest {
 		}
 		
 	}
-	@Ignore
+	@Test
 	//YA SALE
 	public void nuevoCliente() {
 		Cliente cliente = new Cliente();
