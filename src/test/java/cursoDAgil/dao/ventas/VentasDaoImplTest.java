@@ -44,7 +44,7 @@ public class VentasDaoImplTest {
 	@Inject
 	ProductosDao productosDao;
 
-	@Test
+	@Ignore
 	public void listarVentasTodo() {
 		System.out.println("Test consultar todas las ventas");
 		try{
@@ -234,29 +234,18 @@ public class VentasDaoImplTest {
 	public void ventasPorCliente() {/// compras por cliente
 		List<Ventas> list = null;
 		List<Cliente> clientes = null;
-		Map<String, Integer> mapVentas = new HashMap<>();
 		Cliente cliente=new Cliente();
 		Map<String, Integer> mapCliente = new HashMap<>();
-		mapVentas.put("clienteId", 3);
-		mapCliente.put("id", 2);
-		/*try{
-			clientes=clienteDao.listarTodosClientes();
-			for(Cliente c: clientes){
-				System.out.println(" :"+c);
-			}
-		}catch (Exception e) {
-			System.out.println("Error: " + e);
-		}*/
-		
-		/*try {
-			list = ventasDao.obtenerVentaPorClienteId(mapVentas);
+
+		try {
+			list = ventasDao.listarVentasTodo();
 			for (Ventas v : list) {
-				System.out.println("idVenta :" + v.getIdVenta()+"total comprado: " + v.getTotalVenta());
+				System.out.println("idVenta: " + v.getIdVenta()+" total comprado: $" + v.getTotalVenta());
 				mapCliente.put("id", v.getClienteId());
 				cliente = clienteDao.obtenerClientePorId(mapCliente);
 			}
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
-		}*/
+		}
 	}
 }

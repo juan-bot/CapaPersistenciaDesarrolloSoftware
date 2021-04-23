@@ -42,7 +42,7 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 			}*/
 			return list;
 		}catch(Exception e){
-			System.out.println("Error: " + e);
+			System.out.println("Error: c" + e);
 		}
 		return null;
 	}
@@ -123,10 +123,10 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 		try{
 			VentaMapper ventasMapper =sqlSession.getMapper(VentaMapper.class);
 			list = ventasMapper.obtenerVentaPorClienteId(mapVentas);
-			/*for(Ventas v:list){
+			for(Ventas v:list){
 				System.out.println("idVenta :"+v.getIdVenta());
 				System.out.println("clienteId :"+ v.getClienteId());
-			}*/
+			}
 			return list;
 		}catch(Exception e){
 			System.out.println("Error al obtener la venta por el idcliente: " + e);

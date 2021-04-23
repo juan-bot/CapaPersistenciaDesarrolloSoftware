@@ -80,9 +80,12 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 
 	@Override
 	public Cliente obtenerClientePorId(Map<String, Integer> mapCliente) {
+		Cliente cliente =new Cliente();
 		try{
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
-			return clienteMapper.obtenerClientePorId(mapCliente);
+			cliente=clienteMapper.obtenerClientePorId(mapCliente);
+			System.out.println("Cliente :" + cliente.getNombre()+" "+ cliente.getApellido()+"\n");
+			return cliente;
 		}catch(Exception e){
 			System.out.println("Error al obtener el cliente por el id: " + e);
 		}
