@@ -5,7 +5,6 @@
 <mapper namespace="cursoDAgil.bd.mappers.DireccionMapper">
 	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Direccion">
 		<id column="idDireccion" property="idDireccion" jdbcType="INTEGER" />
-
 		<result column="calle" property="calle" jdbcType="VARCHAR" />
 		<result column="numero" property="numero" jdbcType="INTEGER" />
 		<result column="colonia" property="colonia" jdbcType="VARCHAR" />
@@ -20,11 +19,14 @@
 	</select>
 	<insert id="nuevaDireccionCliente" parameterType="cursoDAgil.bd.domain.Direccion"
 		useGeneratedKeys="true" keyProperty="idDireccion">
-		INSERT INTO direccion(calle, numero,
-		colonia, ciudad, estado, pais, codigoPostal)
-		VALUES (#{calle}, #{numero},
-		#{colonia}, #{ciudad}, #{estado}, #{pais}, #{codigoPostal})
+		INSERT INTO direccion(calle, numero,colonia, ciudad, estado, pais, codigoPostal)
+		VALUES (#{calle}, #{numero},#{colonia}, #{ciudad}, #{estado}, #{pais}, #{codigoPostal})
 	</insert>
+	<update id="editarDireccion" parameterType="cursoDAgil.bd.domain.Direccion">
+		UPDATE direccion SET calle= #{calle}, numero= #{numero}, colonia= #{colonia},
+		ciudad= #{ciudad}, estado= #{estado},pais=#{pais},codigoPostal=#{codigoPostal} WHERE idDireccion= #{idDireccion}
+	</update>
+	
 	<select id="obtenerDireccionPorId" resultMap="BaseResultMap"
 		parameterType="hashMap">
 		SELECT

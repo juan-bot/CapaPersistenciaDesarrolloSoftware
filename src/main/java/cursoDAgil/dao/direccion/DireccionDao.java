@@ -10,4 +10,5 @@ public interface DireccionDao {
 	Integer nuevaDireccionCliente(Direccion direccion);
 	Direccion obtenerDireccionPorId(Map<String, Integer> mapDireccion);
 	Integer eliminarDireccion(Map<String, Integer> mapDireccion);
+	Integer editarDireccion(Direccion direccion);
 }

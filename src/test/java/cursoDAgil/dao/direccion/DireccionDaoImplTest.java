@@ -42,7 +42,28 @@ public class DireccionDaoImplTest {
 			System.out.println("Error: " + e);
 		}
 	}
-
+	
+	@Test
+	public void editarDireccion(){
+		Direccion direccion = new Direccion();
+		Map<String, Integer> mapDireccion=new HashMap<>();
+		mapDireccion.put("idDireccion", 1);
+		try{
+			direccion.setIdDireccion(1);
+			direccion.setCalle("independencia");
+			direccion.setNumero(110);
+			direccion.setColonia("linda vista");
+			direccion.setCiudad("oaxaca de juarez");
+			direccion.setEstado("oaxaca");
+			direccion.setPais("mexico");
+			direccion.setCodigoPostal(39220);
+			direccionDao.editarDireccion(direccion);
+		}catch (Exception e){
+			System.out.println("Error al editar direccion" + e);
+		}
+	}
+	
+	
 	@Ignore
 	public void pruebaConsultarTodo() {
 		int reg;

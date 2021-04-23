@@ -70,5 +70,17 @@ public class DireccionDaoImpl implements DireccionDao {
 		return null;
 	}
 
+	@Override
+	public Integer editarDireccion(Direccion direccion) {
+		try{
+			DireccionMapper direccionMapper = sqlSession.getMapper(DireccionMapper.class);
+			System.out.println("Direccion editada con Exito");
+			return direccionMapper.editarDireccion(direccion);
+		}catch(Exception e){
+			System.out.println("ErrorCliente1: " + e);
+		}
+		return null;
+	}
+
 }
 
