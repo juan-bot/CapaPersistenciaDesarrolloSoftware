@@ -44,7 +44,7 @@ public class VentasDaoImplTest {
 	@Inject
 	ProductosDao productosDao;
 
-	@Ignore
+	@Test
 	public void listarVentasTodo() {
 		System.out.println("Test consultar todas las ventas");
 		try{
@@ -230,7 +230,7 @@ public class VentasDaoImplTest {
 		}
 	}
 
-	@Test
+	@Ignore
 	public void ventasPorCliente() {/// compras por cliente
 		List<Ventas> list = null;
 		List<Cliente> clientes = null;

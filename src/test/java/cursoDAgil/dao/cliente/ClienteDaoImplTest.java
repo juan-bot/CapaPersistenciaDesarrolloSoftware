@@ -1,5 +1,6 @@
 package cursoDAgil.dao.cliente;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,14 +27,12 @@ public class ClienteDaoImplTest {
 	ClienteDao clienteDao;
 	@Inject
 	DireccionDao direccionDao;
-	
-	@Ignore
-	//YA SALE
+	@Test
 	public void pruebaConsultarTodo() {
 		System.out.println("Test consultar todos los clientes");
 		try {
 			List<Cliente> lista = clienteDao.listarTodosClientes();
-			assertEquals(lista.size(), 2);
+			assertEquals(lista.size(), 7);
 			System.out.println("//------------------------------------");
 		} catch (Exception ex) {
 			System.out.println("Error en consultar todos los clientes" + ex);
@@ -56,10 +55,8 @@ public class ClienteDaoImplTest {
 		}catch (Exception e){
 			System.out.println("Error en editar cliente" + e);
 		}
-		
 	}
-	@Test
-	//YA SALE
+	@Ignore
 	public void nuevoCliente() {
 		Cliente cliente = new Cliente();
 		Direccion direccion= new Direccion();
@@ -81,7 +78,6 @@ public class ClienteDaoImplTest {
 		}
 	}
 	@Ignore
-	//YA SALE
 	public void consultarClientePorId() {
 		Cliente cliente = new Cliente();
 		Map<String, Integer> mapCliente = new HashMap<>();
@@ -99,10 +95,8 @@ public class ClienteDaoImplTest {
 			System.out.println("Error en consultar cliente por id: " + e);
 		}
 	}
-
 	
 	@Ignore
-	//YA SALE
 	public void eliminarCliente(){
 		Map<String, Integer> mapCliente=new HashMap<>();
 		mapCliente.put("id", 2);

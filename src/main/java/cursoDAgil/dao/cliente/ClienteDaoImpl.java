@@ -17,6 +17,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 
 	private static final long serialVersionUID = 2258246685723751527L;	
 	SqlSession sqlSession;	
+	
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;

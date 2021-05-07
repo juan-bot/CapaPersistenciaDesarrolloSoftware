@@ -23,12 +23,12 @@ public class DetalleVentasDaoImpTest {
 	@Inject
 	DetalleVentasDao detalleVentasDao;
 	
-	@Ignore
+	@Test
 	public void pruebaListarTodasDetallVentas(){
 		System.out.println("Test consultar todas detalle ventas");
 		try{
 			List<DetalleVentas> lista = detalleVentasDao.listarTodasDetalleVentas();
-			assertEquals(lista.size(),2);
+			assertEquals(lista.size(),18);
 			for(DetalleVentas d: lista){
 				System.out.println("VentaId: " + d.getVentaId());
 				System.out.println("ProductoId: " + d.getProductoId());

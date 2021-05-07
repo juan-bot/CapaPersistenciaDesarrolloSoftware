@@ -23,11 +23,12 @@ public class DireccionDaoImplTest {
 	@Inject
 	DireccionDao direccionDao;
 
-	@Ignore
+	@Test
 	public void consultarDireccionPorId() {
 		Direccion direccion = new Direccion();
 		Map<String, Integer> mapDireccion = new HashMap<>();
 		mapDireccion.put("idDireccion", 1);
+		System.out.println("Test consultar direccion por id--");
 		try {
 			direccion = direccionDao.obtenerDireccionPorId(mapDireccion);
 			assertNotNull(direccion);
@@ -48,8 +49,9 @@ public class DireccionDaoImplTest {
 		Direccion direccion = new Direccion();
 		Map<String, Integer> mapDireccion=new HashMap<>();
 		mapDireccion.put("idDireccion", 1);
+		System.out.println("Test editar direccion----");
 		try{
-			direccion.setIdDireccion(1);
+			direccion.setIdDireccion(3);
 			direccion.setCalle("independencia");
 			direccion.setNumero(110);
 			direccion.setColonia("linda vista");
@@ -64,10 +66,10 @@ public class DireccionDaoImplTest {
 	}
 	
 	
-	@Ignore
+	@Test
 	public void pruebaConsultarTodo() {
 		int reg;
-		System.out.println("Test consultar todas las direcciones");
+		System.out.println("Test consultar todas las direcciones--");
 		try {
 			List<Direccion> lista = direccionDao.obtenerDirecciones();
 			reg = lista.size();
@@ -79,12 +81,12 @@ public class DireccionDaoImplTest {
 		}
 	}
 
-	@Ignore
+	@Test
 	public void nuevoRegistro() {
 		Direccion direccion = new Direccion();
-		System.out.println("Test nuevo registro");
+		System.out.println("Test nuevo registro--");
 		try {
-			direccion.setCalle("Micaela Galindo");
+			direccion.setCalle("juannn");
 			direccion.setNumero(3);
 			direccion.setColonia("Centro");
 			direccion.setCiudad("Huajuapan");
@@ -97,10 +99,11 @@ public class DireccionDaoImplTest {
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void eliminarDireccion(){
+		System.out.println("Test eliminar registro--");
 		Map<String, Integer> mapDireccion=new HashMap<>();
-		mapDireccion.put("idDireccion", 18);
+		mapDireccion.put("idDireccion", 20);
 		try{
 			direccionDao.eliminarDireccion(mapDireccion);
 		}catch (Exception e) {

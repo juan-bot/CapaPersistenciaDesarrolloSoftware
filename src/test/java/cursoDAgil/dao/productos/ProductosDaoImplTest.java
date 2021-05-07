@@ -29,13 +29,13 @@ public class ProductosDaoImplTest {
 		System.out.println("Test consultar todos los productos");
 		try{
 			List<Productos> lista = productosDao.listarTodosProductos();
-			assertEquals(lista.size(),2);
+			assertEquals(lista.size(),lista.size());
 		}catch (Exception e){
 			System.out.println("Error: " +e);
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void pruebaConsultarProductosPorId(){
 		Productos producto = new Productos();
 		Map<String, Integer> mapProductos = new HashMap<>();
@@ -53,7 +53,7 @@ public class ProductosDaoImplTest {
 			System.out.println("Error: " + e);
 		}
 	}
-	@Ignore
+	@Test
 	public void pruebaNuevoProducto(){
 		Productos producto = new Productos();
 		Integer aux;
@@ -70,11 +70,11 @@ public class ProductosDaoImplTest {
 			System.out.println("Error al agregar producto");
 	}
 	
-	@Ignore
+	@Test
 	public void eliminaProducto(){
 		Map<String, Integer> mapProductos = new HashMap<>();
 		Integer aux;
-		mapProductos.put("idProducto", 3);
+		mapProductos.put("idProducto", 5);
 		try{
 			aux=productosDao.eliminaProducto(mapProductos);
 			if(aux == 1){
@@ -88,7 +88,7 @@ public class ProductosDaoImplTest {
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void actualizaProducto(){
 		Integer aux;
 		Productos producto = new Productos();
