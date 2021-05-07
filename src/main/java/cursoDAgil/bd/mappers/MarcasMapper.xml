@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cursoDAgil.bd.mappers.MarcasMapper">
+  <resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Marcas">
+    <id column="idMarca" jdbcType="INTEGER" property="idMarca" />
+    <result column="nombreMarca" jdbcType="VARCHAR" property="nombreMarca" />
+  </resultMap>
+  
+  <select id="listarTodasMarcas" resultMap="BaseResultMap">
+  		select * from marcas
+  </select>
+  
+  <select id="listarMarcasPorId" resultMap="BaseResultMap" parameterType="hashMap">
+  		select * from marcas where idMarca = #{idMarca}
+  </select>
+  
+  <insert id="nuevaMarca" parameterType="cursoDAgil.bd.domain.Marcas" useGeneratedKeys="true" keyProperty="idMarca">
+  	INSERT INTO marcas(idMarca, nombreMarca) VALUES(#{idMarca}, #{nombreMarca})
+  </insert>
+  
+  <delete id="eliminaMarca" parameterType="hashMap">
+  	DELETE FROM marcas WHERE idMarca = #{idMarca}
+  </delete>
+  
+  <update id="actualizaMarca" parameterType="cursoDAgil.bd.domain.Marcas">
+  	UPDATE marcas SET nombreMarca = #{nombreMarca} WHERE idMarca = #{idMarca}
+  </update>
+  
+</mapper>

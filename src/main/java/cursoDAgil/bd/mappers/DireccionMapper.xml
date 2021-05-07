@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cursoDAgil.bd.mappers.DireccionMapper">
+	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Direccion">
+		<id column="idDireccion" property="idDireccion" jdbcType="INTEGER" />
+		<result column="calle" property="calle" jdbcType="VARCHAR" />
+		<result column="numero" property="numero" jdbcType="INTEGER" />
+		<result column="colonia" property="colonia" jdbcType="VARCHAR" />
+		<result column="ciudad" property="ciudad" jdbcType="VARCHAR" />
+		<result column="estado" property="estado" jdbcType="VARCHAR" />
+		<result column="pais" property="pais" jdbcType="VARCHAR" />
+		<result column="codigoPostal" property="codigoPostal" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="obtenerDirecciones" resultMap="BaseResultMap">
+		SELECT * FROM
+		DIRECCION
+	</select>
+	<insert id="nuevaDireccionCliente" parameterType="cursoDAgil.bd.domain.Direccion"
+		useGeneratedKeys="true" keyProperty="idDireccion">
+		INSERT INTO direccion(calle, numero,colonia, ciudad, estado, pais, codigoPostal)
+		VALUES (#{calle}, #{numero},#{colonia}, #{ciudad}, #{estado}, #{pais}, #{codigoPostal})
+	</insert>
+	<update id="editarDireccion" parameterType="cursoDAgil.bd.domain.Direccion">
+		UPDATE direccion SET calle= #{calle}, numero= #{numero}, colonia= #{colonia},
+		ciudad= #{ciudad}, estado= #{estado},pais=#{pais},codigoPostal=#{codigoPostal} WHERE idDireccion= #{idDireccion}
+	</update>
+	
+	<select id="obtenerDireccionPorId" resultMap="BaseResultMap"
+		parameterType="hashMap">
+		SELECT
+		dir.idDireccion,
+		dir.calle,
+		dir.numero,
+		dir.colonia,
+		dir.ciudad,
+		dir.estado,
+		dir.pais,
+		dir.codigoPostal
+		FROM
+		DIRECCION dir
+		WHERE
+		idDireccion = #{idDireccion}
+	</select>
+	
+	<delete id= "eliminarDireccion" parameterType= "hashMap">
+	DELETE from direccion WHERE direccion.idDireccion=#{idDireccion}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cursoDAgil.bd.mappers.ProductosMapper">
+
+  <resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Productos">
+  		<id column="idProducto" jdbcType="INTEGER" property="idProducto" />
+		<result column="nombre" jdbcType="VARCHAR" property="nombre" />
+		<result column="precio" jdbcType="DOUBLE" property="precio" />
+		<result column="precioVta" jdbcType="DOUBLE" property="precioVta" />
+		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
+		<result column="marcaId" jdbcType="INTEGER" property="marcaId" />
+  </resultMap>
+  
+  <select id="listarTodosProductos" resultMap="BaseResultMap">
+  		select * from productos
+  </select>
+  
+  <select id="listarProductosPorId" resultMap="BaseResultMap" parameterType="hashMap">
+  		select * from productos where idProducto = #{idProducto}
+  </select>
+
+  <insert id="nuevoProducto" parameterType="cursoDAgil.bd.domain.Productos" useGeneratedKeys="true" keyProperty="idProducto">
+  	INSERT INTO productos(idProducto, nombre,precio,precioVta,cantidad,marcaId) 
+  	VALUES(#{idProducto}, #{nombre},#{precio},#{precioVta},#{cantidad},#{marcaId})
+  </insert>
+  
+  <delete id="eliminaProducto" parameterType="hashMap">
+  	DELETE FROM productos WHERE idProducto = #{idProducto}
+  </delete>
+  
+  <update id="actualizaProducto" parameterType="cursoDAgil.bd.domain.Productos">
+  	UPDATE productos SET idProducto = #{idProducto}, nombre = #{nombre},precio = #{precio},precioVta = #{precioVta},cantidad = #{cantidad},marcaId = #{marcaId} WHERE idProducto = #{idProducto}
+  </update>
+  
+</mapper>
