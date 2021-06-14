@@ -26,8 +26,17 @@
 		<association property="detalleventas" column="id" resultMap="DetalleVentaResultMap" />
 	</resultMap>
 	
-	<select id="listarVentasTodo" resultMap="BaseResultMap">
-		select * from ventas
+	<resultMap type="cursoDAgil.bd.domain.Ventas" id="FullResultMap">
+		<id column="idVenta" jdbcType="INTEGER" property="idVenta" />
+		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
+		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
+		<result column="fecha" jdbcType="DATE" property="fecha" />
+		<association property="cliente" column="clienteId" resultMap="ClienteResultMap" />
+	</resultMap>
+	
+	<select id="listarVentasTodo" resultMap="FullResultMap">
+		SELECT v.idVenta, v.clienteId, v.totalVenta, v.fecha, c.id, c.nombre, c.apellido
+		FROM cliente as c INNER JOIN ventas as v ON v.clienteId = c.id
 	</select>
 	<select id="listarVentasPorCliente" resultMap="ResultVentaCliente">
 		SELECT
@@ -62,6 +71,13 @@
 		FROM Equipo6.VENTAS ven INNER JOIN detalleventas
 		AS d ON ven.idVenta = d.ventaId
 	</select>
+	
+	<select id="ListarVentaPorId" resultMap="BaseResultMap" parameterType="HashMap">
+		SELECT * FROM ventas where ventas.idVenta = #{idVenta}
+	</select>
+	<select id="numberOfRows" resultType="Integer">
+		select count(*) from ventas 
+	</select>
 
 	<resultMap id="ClienteResultMap" type="cursoDAgil.bd.domain.Cliente">
 		<id column="id" jdbcType="INTEGER" property="id" />
@@ -76,13 +92,12 @@
 		<result column="productoId" jdbcType="INTEGER" property="productoId" />
 		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
 	</resultMap>
+	
 	<insert id="nuevaVenta" parameterType="cursoDAgil.bd.domain.Ventas"
 		useGeneratedKeys="true" keyProperty="idVenta">
-		INSERT INTO ventas(idVenta,
-		clienteId,totalVenta,fecha)
-		VALUES(#{idVenta},
-		#{clienteId},#{totalVenta},#{fecha})
+		INSERT INTO ventas VALUES (#{idVenta}, #{clienteId}, #{totalVenta}, CURRENT_TIMESTAMP )
 	</insert>
+	
 	<update id="actualizaVenta" parameterType="cursoDAgil.bd.domain.Ventas">
   	UPDATE ventas SET idVenta = #{idVenta}, clienteId = #{clienteId},totalVenta = #{totalVenta},fecha = #{fecha}
   	WHERE idVenta = #{idVenta}

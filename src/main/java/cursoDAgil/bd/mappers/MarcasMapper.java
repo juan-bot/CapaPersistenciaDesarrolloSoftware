@@ -12,4 +12,5 @@ public interface MarcasMapper {
 	Integer nuevaMarca(Marcas marca);
 	Integer eliminaMarca(Map<String, Integer> mapMarcas);
 	Integer actualizaMarca(Marcas marca);
+	Integer numberOfRows();
 }

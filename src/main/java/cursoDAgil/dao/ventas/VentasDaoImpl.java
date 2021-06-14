@@ -147,5 +147,14 @@ public class VentasDaoImpl implements VentasDao, Serializable {
 		}
 		return null;
 	}
-
+	@Override
+	public Integer numberOfRows() {
+		VentaMapper ventasMapper = sqlSession.getMapper(VentaMapper.class);
+		return ventasMapper.numberOfRows();
+	}
+	@Override
+	public List<Ventas> ListarVentaPorId(Map<String, Integer> map) {
+		VentaMapper ventasMapper = sqlSession.getMapper(VentaMapper.class);
+		return ventasMapper.ListarVentaPorId(map);
+	}
 }

@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cursoDAgil.bd.domain.DetalleVentas;
-import cursoDAgil.bd.domain.Ventas;
 import cursoDAgil.bd.mappers.DetalleVentasMapper;
 
 @Named
@@ -42,7 +41,7 @@ public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 		Integer aux = 0;
 		try{
 			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
-			aux=detalleVentasMapper.nuevoDetalleVenta(detalleventas);
+			aux = detalleVentasMapper.nuevoDetalleVenta(detalleventas);
 			System.out.println("Detalle creado con exito");
 			return aux;
 		}catch(Exception e){
@@ -56,7 +55,7 @@ public class DetalleVentasDaoImp implements DetalleVentasDao, Serializable {
 		List<DetalleVentas> list = null;
 		try{
 			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
-			list=detalleVentasMapper.DetalleVentaPorId(mapDetalle);
+			list = detalleVentasMapper.DetalleVentaPorId(mapDetalle);
 			return list;
 		}catch(Exception e){
 			System.out.println("Error: " + e);

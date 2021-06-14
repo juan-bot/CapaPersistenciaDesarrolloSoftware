@@ -8,18 +8,22 @@
 	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Ganancias">
 		<id column="idGanancia" property="idGanancia" jdbcType="INTEGER" />
 		<result column="ventaId" property="ventaId" jdbcType="INTEGER" />
-		<result column="totalGanancia" property="totalGanancia" jdbcType="DOUBLE" />
-		<result column="fecha" property="fecha" jdbcType="DATE" />
+		<result column="totalGanancia" property="totalGanancia"
+			jdbcType="DOUBLE" />
+		<result column="fecha" property="fecha" jdbcType="VARCHAR" />
 	</resultMap>
 
+	<select id="numberOfRows" resultType="Integer">
+		select count(*) from ganancias
+	</select>
 	<select id="obtenerGanancias" resultMap="BaseResultMap">
-		SELECT * FROM
-		GANANCIAS
+		SELECT *FROM GANANCIAS
 	</select>
 
 	<insert id="nuevaGanancia" parameterType="cursoDAgil.bd.domain.Ganancias"
 		useGeneratedKeys="true" keyProperty="idGanancia">
-		INSERT INTO ganancias(idGanancia,ventaId,totalGanancia,fecha)
+		INSERT INTO
+		ganancias(idGanancia,ventaId,totalGanancia,fecha)
 		VALUES(#{idGanancia},#{ventaId},#{totalGanancia},#{fecha})
 	</insert>
 	<select id="obtenerGananciasPorFecha" resultMap="BaseResultMap"
@@ -29,9 +33,9 @@
 		gan.ventaId,
 		gan.totalGanancia,
 		gan.fecha
-		FROM 
-		GANANCIAS gan 
-		WHERE 
+		FROM
+		GANANCIAS gan
+		WHERE
 		fecha = #{fecha}
 	</select>
 

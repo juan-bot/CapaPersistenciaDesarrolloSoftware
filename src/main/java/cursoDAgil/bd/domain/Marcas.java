@@ -16,4 +16,11 @@ public class Marcas {
 	public void setNombreMarca(String nombreMarca) {
 		this.nombreMarca = nombreMarca;
 	}	
+	public boolean equals(Object object){
+		if(!(object instanceof Marcas)){
+			return false;
+		}
+		Marcas regMarcas = (Marcas) object;
+		return (this.idMarca == regMarcas.idMarca);
+	}
 }

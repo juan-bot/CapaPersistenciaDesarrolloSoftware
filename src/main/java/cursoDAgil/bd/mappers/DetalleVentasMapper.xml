@@ -6,10 +6,34 @@
 		<result column="productoId" jdbcType="INTEGER" property="productoId" />
 		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
 	</resultMap>
+	
+	<resultMap id="ProductosResultMap" type="cursoDAgil.bd.domain.Productos">
+  		<id column="idProducto" jdbcType="INTEGER" property="idProducto" />
+		<result column="nombre" jdbcType="VARCHAR" property="nombre" />
+		<result column="precio" jdbcType="DOUBLE" property="precio" />
+		<result column="precioVta" jdbcType="DOUBLE" property="precioVta" />
+		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
+		<result column="marcaId" jdbcType="INTEGER" property="marcaId" />
+  </resultMap>
+	
+	<resultMap type="cursoDAgil.bd.domain.Ventas" id="VentaResultMap">
+		<id column="idVenta" jdbcType="INTEGER" property="idVenta" />
+		<result column="clienteId" jdbcType="INTEGER" property="clienteId" />
+		<result column="totalVenta" jdbcType="DOUBLE" property="totalVenta" />
+		<result column="fecha" jdbcType="DATE" property="fecha" />
+	</resultMap>
+	
+	<resultMap id="FullResultMap" type="cursoDAgil.bd.domain.DetalleVentas">
+		<result column="ventaId" jdbcType="INTEGER" property="ventaId" />
+		<result column="productoId" jdbcType="INTEGER" property="productoId" />
+		<result column="cantidad" jdbcType="INTEGER" property="cantidad" />
+		<association property="venta" column="ventaId" resultMap="VentaResultMap" />
+		<association property="producto" column="productoId" resultMap="ProductosResultMap"/>
+	</resultMap>
 
-	<select id="listarTodasDetalleVentas" resultMap="BaseResultMap">
-		select * from
-		detalleventas
+	<select id="listarTodasDetalleVentas" resultMap="FullResultMap">
+		SELECT dv.ventaId, dv.productoId, dv.cantidad, v.idVenta, p.idProducto, p.nombre, p.precioVta, p.cantidad 
+		FROM detalleventas as dv, ventas as v, productos as p WHERE dv.ventaId = v.idVenta AND dv.productoId = p.idProducto ORDER BY dv.ventaId
 	</select>
 	<insert id="nuevoDetalleVenta" parameterType="cursoDAgil.bd.domain.DetalleVentas"
 		useGeneratedKeys="true" keyProperty="ventaId">

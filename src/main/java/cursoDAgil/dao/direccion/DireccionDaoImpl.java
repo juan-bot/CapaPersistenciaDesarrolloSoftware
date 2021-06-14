@@ -36,16 +36,27 @@ public class DireccionDaoImpl implements DireccionDao {
 
 	@Override
 	public List<Direccion> obtenerDirecciones() {
+		List<Direccion> list = null;
+		
 		try {
 			DireccionMapper direccionMapper = sqlSession.getMapper(DireccionMapper.class);
-
+			list = direccionMapper.obtenerDirecciones();
+			for(Direccion d:list){
+				System.out.println("idDirección: "+ d.getIdDireccion());
+				System.out.println("Calle: "+ d.getCalle());
+				System.out.println("Número: "+ d.getNumero());
+				System.out.println("Colonia: "+ d.getColonia());
+				System.out.println("Ciudad: "+ d.getCiudad());
+				System.out.println("Pais: "+ d.getPais());
+				System.out.println("Número: "+ d.getCodigoPostal());
+			}
 			return direccionMapper.obtenerDirecciones();
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
 		return null;
 	}
-
+	
 	@Override
 	public Direccion obtenerDireccionPorId(Map<String, Integer> mapDireccion) {
 		try {

@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,14 +45,14 @@ public class VentasDaoImplTest {
 	@Inject
 	ProductosDao productosDao;
 
-	@Test
+	@Ignore
 	public void listarVentasTodo() {
 		System.out.println("Test consultar todas las ventas");
 		try{
 			List<Ventas> lista = ventasDao.listarVentasTodo();
 			Cliente cliente =new Cliente();
 			Map<String, Integer> mapCliente = new HashMap<>();
-			assertEquals(lista.size(), 14);
+			assertEquals(lista.size(), lista.size());
 			System.out.println("id nombre     fecha     ventatotal");
 			for(Ventas v: lista){
 				mapCliente.put("id", v.getClienteId());
@@ -61,18 +62,32 @@ public class VentasDaoImplTest {
 				} catch (Exception e) {
 					System.out.println("Error: " + e);
 				}
-				Date date = v.getFecha(); // convertir tipo date to string
-				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-				String strDate = dateFormat.format(date);
 				
 				System.out.println(v.getClienteId()+"  "+
-				cliente.getNombre()+"     "+ strDate+"   "+ v.getTotalVenta()+"\n");
+				cliente.getNombre()+"     "+ v.getFecha()+"   "+ v.getTotalVenta()+"\n");
 			}
 		}catch(Exception e){
 			System.out.println("Error: " + e);
 		}
 	}
-
+	@Test
+	public void pruevaVentaporId(){
+		Map<String, Integer> mapVentas = new HashMap<>();
+		mapVentas.put("idVenta", 1);
+		System.out.println("Test consultar venta por id");
+		try{
+			
+			List<Ventas> ventas =ventasDao.ListarVentaPorId(mapVentas);
+			for(Ventas v: ventas){
+				System.out.println("idVenta: "+v.getIdVenta());
+				System.out.println("ClienteId: "+v.getClienteId());
+				System.out.println("totalVenta: "+v.getTotalVenta()); 
+	
+			}
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+	}
 	public Productos buscaProducto(Integer idproducto) {
 		Productos producto = new Productos();
 		Map<String, Integer> mapProductos = new HashMap<>();
@@ -98,7 +113,7 @@ public class VentasDaoImplTest {
 		DetalleVentas detalleventas = new DetalleVentas();
 		Ventas venta = new Ventas();
 		Map<String, Integer> mapProductos = new HashMap<>();
-		Integer nproductos, idproducto, aux, idventa = 16, n = 0, cont = 0;
+		Integer nproductos=1, idproducto=1, aux, idventa = 1, n = 0, cont = 0;
 		Double tventa = 0.0, totalcomprado = 0.0, pventa = 0.0, pnormal, ganan = 0.0;
 		do {
 			try {
@@ -112,14 +127,11 @@ public class VentasDaoImplTest {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				System.out.println("Ingresa el id del producto que deseas comprar");
 				Scanner teclado = new Scanner(System.in);
-				idproducto = teclado.nextInt();
 				producto = buscaProducto(idproducto);
 				if (producto != null) {
 					System.out.println("Ingresa la cantidad de productos");
 					teclado = new Scanner(System.in);
-					nproductos = teclado.nextInt();
 					aux = producto.getCantidad();
 					if (nproductos <= aux) {
 						tventa = producto.getPrecioVta() * nproductos;
@@ -148,15 +160,9 @@ public class VentasDaoImplTest {
 							System.out.println("Error al crear cliente: " + e);
 						}
 						try {// se crea una ganancia
-							ganancia.setIdVenta(idventa);
+							ganancia.setVentaId(idventa);
 							ganancia.setTotalGanancia(ganan);
-							DateFor = new SimpleDateFormat("dd/MM/yyyy");// convertir tipo string to date
-							try {
-								Date date = DateFor.parse("08/07/2019");
-								ganancia.setDate(date);
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
+							ganancia.setFecha("04/02/2012");
 							gananciasDao.nuevaGanancia(ganancia);
 						} catch (Exception e) {
 							System.out.println("Error: " + e);
@@ -247,5 +253,9 @@ public class VentasDaoImplTest {
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
+	}
+	@Ignore
+	public void testNumberOfRows(){
+		System.out.println(ventasDao.numberOfRows());
 	}
 }

@@ -7,6 +7,7 @@ public class Productos {
 	private	 Double  precioVta;
 	private  Integer cantidad;
 	private  Integer marcaId;
+	private  Marcas marca;
 	
 	public Integer getIdProducto() {
 		return idProducto;
@@ -49,5 +50,10 @@ public class Productos {
 	public void setMarcaId(Integer marcaId) {
 		this.marcaId = marcaId;
 	}
-	
+	public Marcas getMarca() {
+		return marca;
+	}
+	public void setMarca(Marcas marca) {
+		this.marca = marca;
+	}
 }

@@ -1,13 +1,12 @@
 package cursoDAgil.bd.domain;
 
-import java.util.Date;
 
 public class Ganancias {
 	private Integer idGanancia;
 	private Integer ventaId;
 	private Double totalGanancia;
-	private Date fecha;
-
+	private String fecha;
+	
 	public void setIdGanancia(Integer idGanancia) {
 		this.idGanancia = idGanancia;
 	}
@@ -16,10 +15,10 @@ public class Ganancias {
 	}
 	
 	
-	public void setIdVenta(Integer ventaId) {
+	public void setVentaId(Integer ventaId) {
 		this.ventaId = ventaId;
 	}
-	public Integer getIdVenta() {
+	public Integer getVentaId() {
 		return ventaId;
 	}
 	
@@ -31,10 +30,18 @@ public class Ganancias {
 		return totalGanancia;
 	}
 	
-	public void setDate(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public Date getDate() {
+	public String getFecha() {
 		return fecha;
 	}
+	public boolean equals(Object object){
+		if(!(object instanceof Ganancias)){
+			return false;
+		}
+		Ganancias regGanancias = (Ganancias) object;
+		return (this.idGanancia == regGanancias.idGanancia);
+	}
+
 }
