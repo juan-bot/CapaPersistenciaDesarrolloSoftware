@@ -95,6 +95,15 @@ public class MarcasDaoImp implements MarcasDao, Serializable {
 		return null;
 	}
 
-	
+	@Override
+	public Integer numberOfRows() {
+		try{
+			MarcasMapper marcasMapper = sqlSession.getMapper(MarcasMapper.class);
+			return marcasMapper.numberOfRows();
+		}catch(Exception e){
+			System.out.println("Error: " + e);
+		}
+		return null;
+	}
 
 }

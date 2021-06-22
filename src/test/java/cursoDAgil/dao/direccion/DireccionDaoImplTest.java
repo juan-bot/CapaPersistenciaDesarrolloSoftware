@@ -23,7 +23,7 @@ public class DireccionDaoImplTest {
 	@Inject
 	DireccionDao direccionDao;
 
-	@Test
+	@Ignore
 	public void consultarDireccionPorId() {
 		Direccion direccion = new Direccion();
 		Map<String, Integer> mapDireccion = new HashMap<>();
@@ -44,7 +44,7 @@ public class DireccionDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void editarDireccion(){
 		Direccion direccion = new Direccion();
 		Map<String, Integer> mapDireccion=new HashMap<>();
@@ -66,7 +66,7 @@ public class DireccionDaoImplTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void pruebaConsultarTodo() {
 		int reg;
 		System.out.println("Test consultar todas las direcciones--");
@@ -80,6 +80,7 @@ public class DireccionDaoImplTest {
 
 		}
 	}
+	
 
 	@Test
 	public void nuevoRegistro() {
@@ -99,11 +100,11 @@ public class DireccionDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void eliminarDireccion(){
 		System.out.println("Test eliminar registro--");
 		Map<String, Integer> mapDireccion=new HashMap<>();
-		mapDireccion.put("idDireccion", 20);
+		mapDireccion.put("idDireccion", 16);
 		try{
 			direccionDao.eliminarDireccion(mapDireccion);
 		}catch (Exception e) {

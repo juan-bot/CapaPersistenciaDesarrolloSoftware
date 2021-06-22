@@ -33,14 +33,15 @@ public class GananciasDaoImpl implements GananciasDao {
 			list = gananciasMapper.obtenerGanancias();
 			for(Ganancias g:list){
 				System.out.println("idGanancia"+ g.getIdGanancia());
-				System.out.println("ventaId"+ g.getIdVenta());
+				System.out.println("ventaId"+ g.getVentaId());
+				System.out.println("ventaId"+ g.getFecha());
 				System.out.println("totalGanancia"+ g.getTotalGanancia());
 			}
-			return gananciasMapper.obtenerGanancias();
+			return list;
 		}catch(Exception e){
 			System.out.println("Error1: " + e);
 		}
-		return null;
+		return list;
 	}
 
 	@Override
@@ -56,18 +57,18 @@ public class GananciasDaoImpl implements GananciasDao {
 	}
 
 	@Override
-	public List<Ganancias> obtenerGananciasPorFecha(Map<String, Date> mapGanancias) {
+	public List<Ganancias> obtenerGananciasPorFecha(Map<String, String> mapGanancias) {
 		List<Ganancias> list = null;
 		try{
 			GananciasMapper gananciasMapper = sqlSession.getMapper(GananciasMapper.class);
 			list =  gananciasMapper.obtenerGananciasPorFecha(mapGanancias);
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-			String strDate;// = dateFormat.format(date);
+			
+	
 			for(Ganancias g:list){
-				strDate = dateFormat.format(g.getDate());
-				System.out.println("\nfecha: "+ strDate);
+	
+				System.out.println("\nfecha: "+ g.getFecha());
 				System.out.println("idGanancia: "+ g.getIdGanancia());
-				System.out.println("ventaId: "+ g.getIdVenta());
+				System.out.println("ventaId: "+ g.getVentaId());
 				System.out.println("totalGanancia: "+ g.getTotalGanancia());
 			}
 			return list;
@@ -75,6 +76,11 @@ public class GananciasDaoImpl implements GananciasDao {
 			System.out.println("Error3: " + e);
 		}
 		return null;
+	}
+	@Override
+	public Integer numberOfRows() {
+		GananciasMapper gananciasMapper = sqlSession.getMapper(GananciasMapper.class);
+		return gananciasMapper.numberOfRows();
 	}
 
 }

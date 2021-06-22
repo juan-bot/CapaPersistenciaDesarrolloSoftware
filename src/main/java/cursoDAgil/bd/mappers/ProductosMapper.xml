@@ -11,8 +11,32 @@
 		<result column="marcaId" jdbcType="INTEGER" property="marcaId" />
   </resultMap>
   
-  <select id="listarTodosProductos" resultMap="BaseResultMap">
-  		select * from productos
+  <resultMap id="ResultProductoMarcas" type="cursoDAgil.bd.domain.Productos">
+    <id column="idProducto" property="idProducto" />
+    <result column="nombre" jdbcType="VARCHAR" property="nombre" />
+    <result column="precio" jdbcType="DOUBLE" property="precio" />
+    <result column="precioVta" jdbcType="DOUBLE" property="precioVta" />
+    <result column="cantidad" jdbcType="INTEGER" property="cantidad" />
+    <result column="marcaId" jdbcType="INTEGER" property="marcaId" />
+    <association property="marca" column="marcaId" resultMap="MarcasResultMap" />
+  </resultMap>
+  
+  <resultMap id="MarcasResultMap" type="cursoDAgil.bd.domain.Marcas">
+    <id column="idMarca" jdbcType="INTEGER" property="idMarca" />
+    <result column="nombreMarca" jdbcType="VARCHAR" property="nombreMarca" />
+  </resultMap>
+  
+  <select id="listarTodosProductos" resultMap="ResultProductoMarcas">
+  		SELECT
+		prod.idProducto,
+		prod.nombre,
+		prod.precio,
+		prod.precioVta,
+		prod.cantidad,
+		prod.marcaId,
+		m.idMarca,
+		m.nombreMarca
+		FROM equipo6.productos prod INNER JOIN marcas AS m ON prod.marcaId = m.idMarca
   </select>
   
   <select id="listarProductosPorId" resultMap="BaseResultMap" parameterType="hashMap">

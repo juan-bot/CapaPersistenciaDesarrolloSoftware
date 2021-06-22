@@ -12,4 +12,3 @@ public interface DireccionMapper {
 	Integer eliminarDireccion(Map<String, Integer> mapDireccion);
 	Integer editarDireccion(Direccion direccion);
 }
-

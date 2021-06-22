@@ -11,5 +11,6 @@ public interface ClienteMapper {
 	Integer editarCliente(Cliente cliente);
 	Cliente obtenerClientePorId(Map<String, Integer> mapCliente);
 	Integer eliminarCliente(Map<String, Integer> mapCliente);
+	Integer numberOfRows();
 }
 

@@ -12,7 +12,7 @@
 		<result column="sexo" jdbcType="VARCHAR" property="sexo" />
 		<result column="idDireccion" jdbcType="INTEGER" property="idDireccion" />
 	</resultMap>
-		
+
 
 	<resultMap id="ResultClienteDireccion" type="cursoDAgil.bd.domain.Cliente">
 		<id column="id" property="id" />
@@ -24,7 +24,7 @@
 		<association property="direccion" column="idDireccion"
 			resultMap="DireccionResultMap" />
 	</resultMap>
-	
+
 	<select id="listarTodosClientes" resultMap="ResultClienteDireccion">
 		SELECT
 		cli.id,
@@ -42,22 +42,31 @@
 		d.pais,
 		d.codigoPostal
 		FROM Equipo6.CLIENTE cli
-		INNER JOIN direccion AS d ON cli.idDireccion =
+		INNER JOIN direccion AS d ON
+		cli.idDireccion =
 		d.idDireccion
 	</select>
-	
+
 	<update id="editarCliente" parameterType="cursoDAgil.bd.domain.Cliente">
 		UPDATE cliente SET
 		nombre= #{nombre}, apellido= #{apellido}, email= #{email},
-		sexo= #{sexo}, idDireccion= #{idDireccion} WHERE id= #{id}
+		sexo=
+		#{sexo}, idDireccion= #{idDireccion} WHERE id= #{id}
 	</update>
-	
-	<select id="obtenerClientePorId" resultMap="BaseResultMap"
+
+	<select id="obtenerClientePorId" resultMap="ResultClienteDireccion"
 		parameterType="hashMap">
-		SELECT * FROM cliente WHERE id=#{id}
+		SELECT cli.id, cli.nombre, cli.apellido, cli.email,
+		cli.sexo, cli.idDireccion, d.idDireccion, d.calle, d.numero,
+		d.colonia,
+		d.ciudad,
+		d.estado,
+		d.pais,
+		d.codigoPostal FROM cliente as cli,
+		direccion as d WHERE id=#{id} AND cli.idDireccion = d.idDireccion
 	</select>
-	
-	<resultMap id="DireccionResultMap" type="cursoDAgil.bd.domain.Direccion" >
+
+	<resultMap id="DireccionResultMap" type="cursoDAgil.bd.domain.Direccion">
 		<id column="idDireccion" property="idDireccion" />
 		<result column="calle" property="calle" />
 		<result column="numero" property="numero" />
@@ -67,20 +76,26 @@
 		<result column="pais" property="pais" />
 		<result column="codigoPostal" property="codigoPostal" />
 	</resultMap>
-	
+
 	<!-- Insertar -->
 	<insert id="nuevoCliente" parameterType="cursoDAgil.bd.domain.Cliente">
-		INSERT INTO 
-		cliente (nombre,apellido,email,sexo,idDireccion) 
-		VALUES (#{nombre},#{apellido},#{email},#{sexo},#{direccion.idDireccion}) 
+		INSERT INTO
+		cliente
+		(nombre,apellido,email,sexo,idDireccion)
+		VALUES
+		(#{nombre},#{apellido},#{email},#{sexo},#{direccion.idDireccion})
 	</insert>
 
-	<delete id= "eliminarCliente" parameterType= "hashMap">
-	DELETE from cliente WHERE cliente.id=#{id}
+	<delete id="eliminarCliente" parameterType="hashMap">
+		DELETE from cliente
+		WHERE cliente.id=#{id}
 	</delete>
-	
-	
-	
-		
-	
+
+	<select id="numberOfRows" resultType="Integer">
+		select count(*) from
+		cliente
+	</select>
+
+
+
 </mapper>

@@ -29,6 +29,7 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		try{
 			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
 			list = clienteMapper.listarTodosClientes();
+			System.out.println("Listar Clientes");
 			for(Cliente c:list){
 				System.out.println("Cliente-------");
 				System.out.println("Id: " + c.getId());
@@ -37,12 +38,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 				System.out.println("Email: " + c.getEmail());
 				System.out.println("Sexo: " + c.getSexo());
 				System.out.println("Id Direccion: " + c.getIdDireccion() );
-				System.out.println("Calle: " + c.getDireccion().getCalle() );
-				System.out.println("Numero: " + c.getDireccion().getNumero());
-				System.out.println("Colonia: " + c.getDireccion().getColonia() );
-				System.out.println("Ciudad: " + c.getDireccion().getCiudad());
-				System.out.println("Pais: " + c.getDireccion().getPais());
-				System.out.println("Codigo Postal: " + c.getDireccion().getCodigoPostal());
 			}
 			return list;
 		}catch (Exception e){
@@ -105,6 +100,10 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		
 		return null;
 	}
-	
-	
+	@Override
+	public Integer numberOfRows() {
+		ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+		return clienteMapper.numberOfRows();
+	}
+
 }

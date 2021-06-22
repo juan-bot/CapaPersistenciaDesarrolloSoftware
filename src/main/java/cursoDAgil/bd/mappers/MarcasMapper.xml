@@ -6,12 +6,22 @@
     <result column="nombreMarca" jdbcType="VARCHAR" property="nombreMarca" />
   </resultMap>
   
+  <select id="numberOfRows" resultType="Integer">
+		select count(*) from marcas 
+  </select>
+	
   <select id="listarTodasMarcas" resultMap="BaseResultMap">
   		select * from marcas
   </select>
   
   <select id="listarMarcasPorId" resultMap="BaseResultMap" parameterType="hashMap">
-  		select * from marcas where idMarca = #{idMarca}
+  		SELECT
+		mar.idMarca,
+		mar.nombreMarca
+		FROM
+		MARCAS mar
+		WHERE
+		idMarca = #{idMarca}
   </select>
   
   <insert id="nuevaMarca" parameterType="cursoDAgil.bd.domain.Marcas" useGeneratedKeys="true" keyProperty="idMarca">

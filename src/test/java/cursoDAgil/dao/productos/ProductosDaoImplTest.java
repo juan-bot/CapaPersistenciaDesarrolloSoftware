@@ -24,7 +24,7 @@ public class ProductosDaoImplTest {
 	@Inject
 	ProductosDao productosDao;
 	
-	@Test
+	@Ignore
 	public void pruebaConsultarTodo(){
 		System.out.println("Test consultar todos los productos");
 		try{
@@ -35,7 +35,7 @@ public class ProductosDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void pruebaConsultarProductosPorId(){
 		Productos producto = new Productos();
 		Map<String, Integer> mapProductos = new HashMap<>();
@@ -57,12 +57,11 @@ public class ProductosDaoImplTest {
 	public void pruebaNuevoProducto(){
 		Productos producto = new Productos();
 		Integer aux;
-		//producto.setIdProducto(3);
 		producto.setNombre("carro");
 		producto.setPrecio(23.34);
 		producto.setPrecioVta(45.2);
 		producto.setCantidad(4);
-		producto.setMarcaId(2);
+		producto.setMarcaId(1);
 		aux =productosDao.nuevoProducto(producto);
 		if (aux == 1)
 			System.out.println("Producto agregado con exito");
@@ -70,11 +69,11 @@ public class ProductosDaoImplTest {
 			System.out.println("Error al agregar producto");
 	}
 	
-	@Test
+	@Ignore
 	public void eliminaProducto(){
 		Map<String, Integer> mapProductos = new HashMap<>();
 		Integer aux;
-		mapProductos.put("idProducto", 5);
+		mapProductos.put("idProducto", 6);
 		try{
 			aux=productosDao.eliminaProducto(mapProductos);
 			if(aux == 1){
@@ -88,11 +87,11 @@ public class ProductosDaoImplTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void actualizaProducto(){
 		Integer aux;
 		Productos producto = new Productos();
-		producto.setIdProducto(2);
+		producto.setIdProducto(5);
 		producto.setNombre("telefono");
 		producto.setPrecio(33.2);
 		producto.setPrecioVta(45.2);

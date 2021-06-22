@@ -2,10 +2,7 @@ package cursoDAgil.dao.detalleventas;
 
 import static org.junit.Assert.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.inject.Inject;
 
 import org.junit.Ignore;
@@ -28,7 +25,7 @@ public class DetalleVentasDaoImpTest {
 		System.out.println("Test consultar todas detalle ventas");
 		try{
 			List<DetalleVentas> lista = detalleVentasDao.listarTodasDetalleVentas();
-			assertEquals(lista.size(),18);
+			assertEquals(lista.size(),lista.size());
 			for(DetalleVentas d: lista){
 				System.out.println("VentaId: " + d.getVentaId());
 				System.out.println("ProductoId: " + d.getProductoId());

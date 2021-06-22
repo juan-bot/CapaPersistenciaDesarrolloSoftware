@@ -7,7 +7,6 @@ public class Direccion {
 	private String colonia;
 	private String ciudad;
 	private String estado;
-
 	private String pais;
 	private Integer codigoPostal;
 
@@ -73,5 +72,13 @@ public class Direccion {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public boolean equals(Object object){
+		if(!(object instanceof Direccion)){
+			return false;
+		}
+		Direccion regDireccion = (Direccion) object;
+		return (this.idDireccion == regDireccion.idDireccion);
 	}
 }
